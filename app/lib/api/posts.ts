@@ -26,7 +26,13 @@ export async function createPost(data: CreatePostInput) {
     throw new Error("Failed to create post");
   }
 
-  return res.json();
+  const result = await res.json();
+
+  if (!result.id) {
+    throw new Error("Failed to create post");
+  }
+
+  return result;
 }
 
 export async function updatePost(id: number, data: UpdatePostInput) {

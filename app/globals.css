@@ -38,7 +38,7 @@ body {
   }
 
   .text-input {
-    @apply text-sm font-medium text-gray;
+    @apply text-sm font-medium text-gray focus:text-black;
   }
 
   .text-base {

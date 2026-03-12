@@ -27,13 +27,18 @@ export default function CreatePostForm({ username }: CreatePostFormProps) {
           setTitle("");
           setContent("");
         },
+        onError: (error) => {
+          console.error("Failed to create post:", error);
+        },
       },
     );
   }
 
   return (
-    <form className="p-6 border border-darkgray rounded-2xl" onSubmit={handleSubmit}>
-       
+    <form
+      className="p-6 border border-darkgray rounded-2xl"
+      onSubmit={handleSubmit}
+    >
       <h2 className="text-heading pb-5">What's on your mind?</h2>
 
       <label className="block text-label mb-1" htmlFor="post-title">
@@ -44,6 +49,7 @@ export default function CreatePostForm({ username }: CreatePostFormProps) {
         id="post-title"
         className="input-field text-input mb-4"
         placeholder="Hello world"
+        maxLength={256}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
@@ -56,15 +62,16 @@ export default function CreatePostForm({ username }: CreatePostFormProps) {
         id="post-content"
         className="input-field text-input mb-4 resize-none h-20"
         placeholder="Content here"
+        maxLength={4096}
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
 
       <div className="flex justify-end">
-        <Button 
-        type="submit"
-        disabled={isDisabled || isPending}
-        aria-label="Create a new post with the provided title and content"
+        <Button
+          type="submit"
+          disabled={isDisabled || isPending}
+          aria-label="Create a new post with the provided title and content"
         >
           {isPending ? "Creating..." : "Create"}
         </Button>

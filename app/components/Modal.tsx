@@ -32,6 +32,10 @@ export default function Modal({
   }, []);
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
     function handleEsc(e: KeyboardEvent) {
       if (e.key === "Escape") {
         onClose?.();
@@ -40,8 +44,11 @@ export default function Modal({
 
     window.addEventListener("keydown", handleEsc);
 
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, [onClose]);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen || !mounted) return null;
 

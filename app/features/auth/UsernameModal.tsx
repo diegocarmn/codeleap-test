@@ -34,6 +34,8 @@ export default function UsernameModal({
       <input
         id="username-input"
         className="input-field text-input mb-4"
+        type="text"
+        maxLength={256}
         placeholder="John Doe"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
