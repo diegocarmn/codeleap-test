@@ -29,14 +29,14 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
       className="fixed inset-0 flex items-center justify-center z-50"
       onClick={onClose}
     >
-      <div
+      <form
         role="dialog"
         aria-modal="true"
         className="modal p-6"
         onClick={(e) => e.stopPropagation()}
       >
         {children}
-      </div>
+      </form>
     </div>,
     document.body,
   );

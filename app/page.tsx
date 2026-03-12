@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import UsernameModal from "./features/auth/UsernameModal";
+import CreatePostForm from "./features/posts/CreatePostForm";
 
 export default function Page() {
   const [username, setUsername] = useState<string | null>(null);
@@ -23,9 +24,18 @@ export default function Page() {
     <>
       <UsernameModal isOpen={!username} onSubmit={handleUsernameSubmit} />
 
-      {username && <main>
-        <p>Welcome, {username}!</p>
-        </main>}
+      {username && (
+        <main className="max-w-200 mx-auto bg-white h-screen">
+          
+          <h1 className="text-heading text-white bg-primary px-9.25 py-6.75">
+            CodeLeap Network
+          </h1>
+
+          <section className="m-2 sm:m-6">
+            <CreatePostForm username={username} />
+          </section>
+        </main>
+      )}
     </>
   );
 }

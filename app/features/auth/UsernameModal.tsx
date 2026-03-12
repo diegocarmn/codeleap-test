@@ -33,7 +33,7 @@ export default function UsernameModal({
 
       <input
         id="username-input"
-        className="input-field text-input mb-4 "
+        className="input-field text-input mb-4"
         placeholder="John Doe"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -43,6 +43,7 @@ export default function UsernameModal({
       <div className="flex justify-end">
         <Button
           onClick={handleSubmit}
+          type="submit"
           disabled={isDisabled}
           aria-label="Enter the app with the provided username"
         >
