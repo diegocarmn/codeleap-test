@@ -2,7 +2,7 @@ const BASE_URL = "https://dev.codeleap.co.uk/careers/";
 import type { Post, CreatePostInput, UpdatePostInput } from "../../types/post";
 
 export async function getPosts(): Promise<Post[]> {
-  const res = await fetch(BASE_URL);
+  const res = await fetch(BASE_URL, { cache: "no-store" });
 
   if (!res.ok) {
     throw new Error("Failed to fetch posts");

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "danger" | "success";
 
 type ButtonProps = {
   variant?: Variant;
@@ -13,11 +13,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
 
-  const baseStyles = "px-8 py-1 rounded rounded-lg font-bold transition-colors cursor-pointer disabled:cursor-not-allowed disabled:bg-gray";
+  const baseStyles = "py-1 rounded rounded-lg font-bold transition-colors cursor-pointer disabled:cursor-not-allowed disabled:bg-gray w-[120px]";
 
   const variants = {
-    primary: "bg-primary text-white hover:opacity-90",
-    secondary: "bg-gray-200 text-black hover:bg-gray-300",
+    primary: "bg-primary text-white enabled:hover:opacity-90",
+    secondary: "bg-white text-black enabled:hover:bg-lightgray/20 border border-black",
+    danger: "bg-danger text-white enabled:hover:opacity-90",
+    success: "bg-success text-white enabled:hover:opacity-90",
   };
 
   return (

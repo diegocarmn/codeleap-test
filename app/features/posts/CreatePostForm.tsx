@@ -16,7 +16,10 @@ export default function CreatePostForm({ username }: CreatePostFormProps) {
 
   const isDisabled = title.trim() === "" || content.trim() === "";
 
-  function handleSubmit() {
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (isDisabled) return;
+
     mutate(
       { username, title, content },
       {
@@ -29,8 +32,8 @@ export default function CreatePostForm({ username }: CreatePostFormProps) {
   }
 
   return (
-    <form className="p-6 border border-darkgray rounded-2xl">
-
+    <form className="p-6 border border-darkgray rounded-2xl" onSubmit={handleSubmit}>
+       
       <h2 className="text-heading pb-5">What's on your mind?</h2>
 
       <label className="block text-label mb-1" htmlFor="post-title">
@@ -59,7 +62,7 @@ export default function CreatePostForm({ username }: CreatePostFormProps) {
 
       <div className="flex justify-end">
         <Button 
-        onClick={handleSubmit} 
+        type="submit"
         disabled={isDisabled || isPending}
         aria-label="Create a new post with the provided title and content"
         >

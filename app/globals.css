@@ -11,6 +11,8 @@
   --color-gray: #777777;
   --color-lightgray: #CCCCCC;
   --color-darkgray: #999999;
+  --color-danger: #FF5151;
+  --color-success: #47B960;
 
   --spacing-1: 4px;
   --spacing-2: 8px;
@@ -39,8 +41,16 @@ body {
     @apply text-sm font-medium text-gray;
   }
 
+  .text-base {
+    @apply text-lg text-black;
+  }
+
+  .text-post-username {
+    @apply text-lg font-bold text-gray;
+  }
+
   .modal {
-    @apply bg-white rounded-2xl w-125 max-w-[90%] border border-lightgray;
+    @apply bg-white rounded-2xl  border border-lightgray;
   }
 
   .input-field {

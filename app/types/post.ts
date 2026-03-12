@@ -16,3 +16,10 @@ export type UpdatePostInput = {
   title: string;
   content: string;
 };
+
+export type PaginatedResponse = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Post[];
+};
