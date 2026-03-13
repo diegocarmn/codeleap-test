@@ -23,7 +23,7 @@ body {
 
 @layer utilities {
   .text-heading {
-    @apply text-[22px] font-bold;
+    @apply text-xl md:text-[22px] font-bold;
   }
 
   .text-label {
@@ -34,16 +34,20 @@ body {
     @apply text-sm font-medium text-gray focus:text-black;
   }
 
-  .text-base {
-    @apply text-lg text-black;
+  .text-content {
+    @apply text-base md:text-lg text-black;
   }
 
   .text-post-username {
-    @apply text-lg font-bold text-gray;
+    @apply text-base md:text-lg font-bold text-gray;
+  }
+
+  .text-post-datetime {
+    @apply text-base md:text-lg text-gray;
   }
 
   .modal {
-    @apply bg-white rounded-2xl  border border-lightgray;
+    @apply bg-white rounded-2xl border border-lightgray;
   }
 
   .input-field {

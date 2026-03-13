@@ -51,7 +51,7 @@ export default function EditPostModal({
       <div className="input-field mb-4 overflow-hidden p-0 focus-within:outline focus-within:outline-gray">
         <textarea
           id="edit-content"
-          className="text-input resize-y min-h-20 max-h-[50vh] w-full focus:outline-none"
+          className="text-input resize-y h-[50dvh] md:h-fit min-h-20 max-h-[50vh] w-full focus:outline-none"
           value={content}
           maxLength={4096}
           onChange={(e) => setContent(e.target.value)}

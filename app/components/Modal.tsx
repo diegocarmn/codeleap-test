@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Animate from "./Animate";
 
 type ModalProps = {
   isOpen: boolean;
@@ -23,8 +24,8 @@ export default function Modal({
   const mouseDownOnBackdrop = useRef(false);
 
   const sizes = {
-    medium: "w-125 max-w-[90%]",
-    large: "w-[660px] max-w-[90%]",
+    medium: "m-2 md:w-125 md:m-0 md:max-w-[90%]",
+    large: "m-2 w-full md:w-[660px] md:m-0 md:max-w-[90%]",
   };
 
   useEffect(() => {
@@ -66,14 +67,15 @@ export default function Modal({
         mouseDownOnBackdrop.current = false;
       }}
     >
-      <form
-        role="dialog"
-        aria-modal="true"
-        className={`modal p-6 ${sizes[size]}`}
-        onSubmit={(e) => e.preventDefault()}
-      >
-        {children}
-      </form>
+      <Animate variant="scale" className={`modal p-6 ${sizes[size]}`}>
+        <form
+          role="dialog"
+          aria-modal="true"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          {children}
+        </form>
+      </Animate>
     </div>,
     document.body,
   );

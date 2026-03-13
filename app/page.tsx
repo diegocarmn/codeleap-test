@@ -29,7 +29,7 @@ export default function Page() {
       {username && (
         <main className="max-w-200 mx-auto bg-white min-h-screen">
           
-          <header className="text-heading text-white bg-primary px-9 py-6">
+          <header className="text-heading flex items-center justify-between text-white bg-primary px-6 md:px-9 py-6">
             CodeLeap Network
             <IconButton
               icon={
@@ -40,7 +40,7 @@ export default function Page() {
                   width={30}
                 />
               }
-              className="cursor-pointer float-right"
+              className="cursor-pointer"
               onClick={() => {
                 localStorage.removeItem("username");
                 setUsername(null);
@@ -50,7 +50,7 @@ export default function Page() {
             />
           </header>
 
-          <section className="p-2 sm:p-6 flex flex-col gap-6 pb-6">
+          <section className="px-2 pt-4 md:p-6 flex flex-col gap-4 md:gap-6 pb-6">
             <CreatePostForm username={username} />
             <PostList username={username} />
           </section>
