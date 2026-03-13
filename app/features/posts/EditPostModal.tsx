@@ -41,25 +41,33 @@ export default function EditPostModal({
         id="edit-title"
         className="input-field text-input mb-4"
         value={title}
+        maxLength={256}
         onChange={(e) => setTitle(e.target.value)}
       />
 
       <label className="block text-label mb-1" htmlFor="edit-content">
         Content
       </label>
-      <textarea
-        id="edit-content"
-        className="input-field text-input mb-4 resize-y min-h-20 max-h-[50vh]"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
+      <div className="input-field mb-4 overflow-hidden p-0 focus-within:outline focus-within:outline-gray">
+        <textarea
+          id="edit-content"
+          className="text-input resize-y min-h-20 max-h-[50vh] w-full focus:outline-none"
+          value={content}
+          maxLength={4096}
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </div>
 
       <div className="flex justify-end gap-4">
         <Button variant="secondary" onClick={onClose} disabled={isPending}>
           Cancel
         </Button>
 
-        <Button onClick={handleSave} variant="success" disabled={isDisabled || isPending}>
+        <Button
+          onClick={handleSave}
+          variant="success"
+          disabled={isDisabled || isPending}
+        >
           {isPending ? "Saving..." : "Save"}
         </Button>
       </div>

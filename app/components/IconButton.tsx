@@ -10,7 +10,7 @@ export default function IconButton({
     ...props
 }: IconButtonProps) {
 
-  const baseStyles = "p-1 rounded transition-colors enabled:hover:bg-lightgray/20 disabled:cursor-not-allowed disabled:bg-transparent";
+  const baseStyles = "p-1 rounded rounded-lg transition-colors enabled:hover:bg-lightgray/20 disabled:cursor-not-allowed disabled:bg-transparent active:scale-95 transition-transform ease-in-out duration-150";
     return (
     <button
       className={`${baseStyles} ${className}`}

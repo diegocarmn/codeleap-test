@@ -13,11 +13,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
 
-  const baseStyles = "py-1 rounded rounded-lg font-bold transition-colors cursor-pointer disabled:cursor-not-allowed disabled:bg-gray w-[120px]";
+  const baseStyles = "py-1 rounded rounded-lg font-bold transition-colors cursor-pointer disabled:cursor-not-allowed w-30";
 
   const variants = {
-    primary: "bg-primary text-white enabled:hover:opacity-90",
-    secondary: "bg-white text-black enabled:hover:bg-lightgray/20 border border-black",
+    primary:
+      "bg-primary text-white enabled:hover:opacity-90 disabled:bg-disabled",
+    secondary:
+      "bg-white text-black enabled:hover:bg-lightgray/20 border border-black disabled:bg-disabled disabled:text-white disabled:border-disabled",
     danger: "bg-danger text-white enabled:hover:opacity-90",
     success: "bg-success text-white enabled:hover:opacity-90",
   };
