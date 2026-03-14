@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Post } from "../../types/post";
 import DeletePostModal from "./DeletePostModal";
 import EditPostModal from "./EditPostModal";
@@ -35,8 +35,29 @@ export default function PostCard({ post, username }: PostCardProps) {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [canExpand, setCanExpand] = useState(false);
+  const contentRef = useRef<HTMLParagraphElement>(null);
 
   const isOwner = post.username === username;
+
+  useEffect(() => {
+    const contentElement = contentRef.current;
+
+    if (!contentElement) {
+      return;
+    }
+
+    const checkOverflow = () => {
+      setCanExpand(contentElement.scrollHeight > 320);
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+
+    return () => {
+      window.removeEventListener("resize", checkOverflow);
+    };
+  }, [post.content]);
 
   return (
     <>
@@ -81,12 +102,37 @@ export default function PostCard({ post, username }: PostCardProps) {
                 {getTimeAgo(post.created_datetime)}
               </span>
             </div>
+            <div className="relative">
+              <p
+                ref={contentRef}
+                className="text-content whitespace-pre-line wrap-break-word leading-5"
+                style={{
+                  maxHeight: expanded ? "none" : "320px",
+                  overflow: "hidden",
+                }}
+              >
+                {post.content}
+              </p>
 
-            <p
-              className={`text-content whitespace-pre-line wrap-break-word leading-5`}
-            >
-              {post.content}
-            </p>
+              {!expanded && canExpand ? (
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-white to-transparent"
+                />
+              ) : null}
+            </div>
+
+            {canExpand ? (
+              <button
+                type="button"
+                className="mt-3 ml-auto block text-base md:text-lg font-bold text-primary transition-opacity hover:opacity-80 cursor-pointer"
+                onClick={() =>
+                  setExpanded((currentExpanded) => !currentExpanded)
+                }
+              >
+                {expanded ? "Read less" : "Read more"}
+              </button>
+            ) : null}
           </div>
         </article>
       </Animate>
