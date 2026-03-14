@@ -74,7 +74,7 @@ export default function PostCard({ post, username }: PostCardProps) {
                 <IconButton
                   icon={
                     <img
-                      src="/ic_baseline-delete-forever.svg"
+                      src="/delete.svg"
                       alt="Delete"
                       height={30}
                     />
