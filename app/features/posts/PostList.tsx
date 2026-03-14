@@ -47,9 +47,20 @@ export default function PostList({ username }: PostListProps) {
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
   if (isLoading)
-    return <p className="text-center text-gray">Loading posts...</p>;
+    return (
+      <p className="flex items-center justify-center text-center text-gray">
+        <img
+          src="/refresh.svg"
+          alt="Loading posts..."
+          height={25}
+          width={25}
+          className="mr-2 animate-spin"
+        />
+        Loading posts...
+      </p>
+    );
   if (isError)
-    return <p className="text-center text-red-500">Failed to load posts.</p>;
+    return <p className="text-center text-danger">Failed to load posts.</p>;
   if (!posts?.length)
     return <p className="text-center text-gray">No posts yet.</p>;
 
@@ -61,7 +72,17 @@ export default function PostList({ username }: PostListProps) {
 
       {hasNextPage ? (
         <div ref={loadMoreRef} className="py-2 text-center text-gray">
-          {isFetchingNextPage ? "Loading more posts..." : "Scroll to load more"}
+          {isFetchingNextPage ? (
+            <img
+              src="/refresh.svg"
+              alt="Loading more posts..."
+              height={25}
+              width={25}
+              className="mx-auto animate-spin"
+            />
+          ) : (
+            "Scroll to load more"
+          )}
         </div>
       ) : null}
     </div>

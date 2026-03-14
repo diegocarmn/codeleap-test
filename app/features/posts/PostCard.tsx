@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import type { Post } from "../../types/post";
 import DeletePostModal from "./DeletePostModal";
 import EditPostModal from "./EditPostModal";
@@ -11,6 +12,8 @@ type PostCardProps = {
   post: Post;
   username: string;
 };
+
+const COLLAPSED_CONTENT_HEIGHT = 320;
 
 function getTimeAgo(dateString: string): string {
   const now = new Date();
@@ -48,7 +51,7 @@ export default function PostCard({ post, username }: PostCardProps) {
     }
 
     const checkOverflow = () => {
-      setCanExpand(contentElement.scrollHeight > 320);
+      setCanExpand(contentElement.scrollHeight > COLLAPSED_CONTENT_HEIGHT);
     };
 
     checkOverflow();
@@ -103,23 +106,39 @@ export default function PostCard({ post, username }: PostCardProps) {
               </span>
             </div>
             <div className="relative">
-              <p
-                ref={contentRef}
-                className="text-content whitespace-pre-line wrap-break-word leading-5"
-                style={{
-                  maxHeight: expanded ? "none" : "320px",
-                  overflow: "hidden",
+              <motion.div
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: canExpand
+                    ? expanded
+                      ? "auto"
+                      : COLLAPSED_CONTENT_HEIGHT
+                    : "auto",
                 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
-                {post.content}
-              </p>
+                <p
+                  ref={contentRef}
+                  className="text-content whitespace-pre-line wrap-break-word leading-5"
+                >
+                  {post.content}
+                </p>
+              </motion.div>
 
-              {!expanded && canExpand ? (
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-white to-transparent"
-                />
-              ) : null}
+              <AnimatePresence initial={false}>
+                {!expanded && canExpand ? (
+                  <motion.div
+                    key="post-content-fade"
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-white to-transparent"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.1, ease: "easeOut" }}
+                  />
+                ) : null}
+              </AnimatePresence>
             </div>
 
             {canExpand ? (
