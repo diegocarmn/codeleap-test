@@ -62,7 +62,7 @@ export default function PostCard({ post, username }: PostCardProps) {
   return (
     <>
       <Animate variant="fadeUp">
-        <article className="rounded-2xl overflow-hidden border border-darkgray">
+        <article className="rounded-2xl overflow-hidden">
           <header className="bg-primary text-white px-6 py-5 flex items-center justify-between">
             <h2 className="text-heading truncate">{post.title}</h2>
 
@@ -93,7 +93,7 @@ export default function PostCard({ post, username }: PostCardProps) {
             )}
           </header>
 
-          <div className="px-6 py-5">
+          <div className="px-6 py-5 rounded-b-2xl border-b border-x border-darkgray">
             <div className="flex justify-between mb-4">
               <span className="text-post-username truncate text-darkgray">
                 @{post.username}

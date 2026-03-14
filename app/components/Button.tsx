@@ -19,7 +19,7 @@ export default function Button({
     primary:
       "bg-primary text-white enabled:hover:opacity-90 disabled:bg-disabled",
     secondary:
-      "bg-white text-black enabled:hover:bg-lightgray/20 border border-black disabled:bg-disabled disabled:text-white disabled:border-disabled",
+      "bg-white text-black enabled:hover:bg-lightgray/20 border border-darkgray disabled:bg-disabled disabled:text-white disabled:border-disabled",
     danger: "bg-danger text-white enabled:hover:opacity-90",
     success: "bg-success text-white enabled:hover:opacity-90",
   };
