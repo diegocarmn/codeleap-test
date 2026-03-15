@@ -3,9 +3,17 @@
   CodeLeap Network — Frontend Challenge
 </h1>
 
-Frontend application developed as a technical challenge for a position at CodeLeap.
+<p>
+  <img src="https://img.shields.io/badge/Next.js-16-black" />
+  <img src="https://img.shields.io/badge/React-19-149eca" />
+  <img src="https://img.shields.io/badge/TypeScript-Strict-blue" />
+  <img src="https://img.shields.io/badge/Tailwind-v4-38bdf8" />
+  <img src="https://img.shields.io/badge/ReactQuery-TanStack-ff4154" />
+</p>
 
-The project implements a small social feed with local username-based authentication, post creation, editing, deletion, and infinite scroll listing, consuming CodeLeap's public API.
+Frontend application built as part of the CodeLeap engineering challenge.
+
+The project implements a small social feed where users can create, edit, and delete posts, with infinite scrolling and smooth UI interactions, consuming CodeLeap's public API.
 
 🔗 **Live:** https://codeleap-test-diegocarmona.vercel.app/  
 📂 **Repository:** https://github.com/diegocarmn/codeleap-test
@@ -14,23 +22,34 @@ The project implements a small social feed with local username-based authenticat
 
 This project was built with focus on:
 
-- Clear, component-driven architecture
-- Best practices with React + TypeScript
-- Remote state management with React Query
-- Smooth UX (modals, visual feedback, animations, and infinite scroll)
-- Readable and maintainable code
+- **Component-driven architecture** with clear separation of concerns
+- **Server-state management** using React Query (queries, mutations, cache)
+- **Infinite scrolling feed** with IntersectionObserver
+- **Reusable UI components** for buttons, modals, and animations
+- **Type-safe API integration** with TypeScript
+- **Responsive design** following the provided Figma layout
+
+
+## 📸 Preview
+
+<p align="center">
+  <img src="./public/screenshot.png" width="1000"/>
+</p>
+
+  _Desktop screen layout. Following the <a href="https://www.figma.com/design/0OQWLQmU14SF2cDhHPJ2sx/CodeLeap-Engineering-Test?node-id=29005-195&t=mU3fFudikiGZBk93-0">provided Figma design.</a>_
+
 
 ## ✨ Features
 
-- Simple username login (persisted in localStorage)
-- Post creation (title + content)
-- Post listing sorted by newest first
-- Infinite scroll with IntersectionObserver
-- Post editing (only for the post owner)
-- Post deletion (only for the post owner)
-- Loading and error visual feedback
-- Motion-based animations (card entrance and Read more/less expansion)
-- Responsive layout for mobile and desktop
+- **Local username authentication** with login/logout persisted in localStorage
+- **Post creation** with title and content
+- **Post feed sorted by newest first**
+- **Infinite scroll** powered by IntersectionObserver
+- **Post editing and deletion** restricted to the post owner
+- **Expandable post cards** with smooth *Read more / Read less* interaction
+- **Loading and error states** with visual feedback
+- **Motion-based UI animations** for smoother interactions
+- **Responsive layout** for mobile and desktop
 
 ## 🧰 Tech Stack
 
@@ -86,7 +105,7 @@ Structure prepared for future evolution, for example:
 - real authentication (token/session)
 - automated tests
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```text
 app/
