@@ -66,7 +66,7 @@ export default function PostCard({ post, username }: PostCardProps) {
     <>
       <Animate variant="fadeUp">
         <article className="rounded-2xl overflow-hidden">
-          <header className="bg-primary text-white px-6 py-5 flex items-center justify-between">
+          <header className="bg-primary text-white px-6 py-5 flex items-center justify-between h-18">
             <h2 className="text-heading truncate">{post.title}</h2>
 
             {isOwner && (
